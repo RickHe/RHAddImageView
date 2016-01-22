@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "HMYPodTest"
-  s.version         = "1.0.1"  
+  s.version         = "1.0.2"  
   s.summary          = "A marquee view used on iOS."  
   s.description      = "It is a marquee view used on iOS, which implement by Objective-C" 
   s.homepage         = "https://github.com/RickHe/HMYPodTest.git"  
