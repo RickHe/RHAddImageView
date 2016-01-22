@@ -44,6 +44,8 @@ const NSString *kDeleteImageNotification = @"kDeleteImageNotification";
 - (instancetype)initWithFrame:(CGRect)frame
       NumberOfImageForOneLine:(NSUInteger)numberOfImage {
     if (self = [super initWithFrame:frame]) {
+        _deleteImage = [UIImage imageNamed:@"XYdeletepicyure"];
+        _addImage = [UIImage imageNamed:@"XYaddpicture"];
         NSParameterAssert(numberOfImage < 11);
         _imageCount = 0;
         _currentSection = 0;
@@ -57,7 +59,7 @@ const NSString *kDeleteImageNotification = @"kDeleteImageNotification";
         
         // 添加按钮
         _addImageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_addImageBtn setBackgroundImage:[UIImage imageNamed:@"addpicture"] forState:UIControlStateNormal];
+        [_addImageBtn setBackgroundImage:_addImage forState:UIControlStateNormal];
         _addImageBtn.frame = CGRectMake((17 - _numberOfImageForOneLine), 0, _imageWidth, _imageHeight);
         [_addImageBtn addTarget:self action:@selector(addImage:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_addImageBtn];
@@ -83,6 +85,12 @@ const NSString *kDeleteImageNotification = @"kDeleteImageNotification";
  */
 - (instancetype)init {
     return [self initWithFrame:CGRectMake(0, 0, kScreenWidth, 100) NumberOfImageForOneLine:4];
+}
+
+#pragma mark - Set Image
+- (void)setAddImage:(UIImage *)addImage {
+    _addImage = addImage;
+    [_addImageBtn setBackgroundImage:_addImage forState:UIControlStateNormal];
 }
 
 #pragma mark - ButtonActions
@@ -176,8 +184,8 @@ const NSString *kDeleteImageNotification = @"kDeleteImageNotification";
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"没有摄像头" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alert show];
     }
-
 }
+
 
 /**
  *  添加图片完成后视图变化
@@ -195,7 +203,7 @@ const NSString *kDeleteImageNotification = @"kDeleteImageNotification";
     [self addSubview:image];
 
     UIButton *_deleteImageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_deleteImageBtn setBackgroundImage:[UIImage imageNamed:@"deletepicyure"] forState:UIControlStateNormal];
+    [_deleteImageBtn setBackgroundImage:_deleteImage forState:UIControlStateNormal];
     _deleteImageBtn.frame = CGRectMake(image.frame.size.width - 6, -6, 12, 12);
     [_deleteImageBtn addTarget:self action:@selector(deleteImage:) forControlEvents:UIControlEventTouchUpInside];
     _deleteImageBtn.tag = 100 + index;

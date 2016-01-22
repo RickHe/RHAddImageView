@@ -39,6 +39,8 @@
 - (instancetype)initWithFrame:(CGRect)frame
       NumberOfImageForOneLine:(NSUInteger)numberOfImage;
 
+@property (nonatomic, readwrite, strong) UIImage *deleteImage;
+@property (nonatomic, readwrite, strong) UIImage *addImage;
 @property (nonatomic, weak) id<XYAddImageViewDelegtate> delegate;
 @property (nonatomic, readonly, assign) NSUInteger currentSection; // 当前图片行数
 

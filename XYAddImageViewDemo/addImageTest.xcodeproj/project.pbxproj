@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5160E8F61C520BCB0088B2A8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5160E8F51C520BCB0088B2A8 /* ViewController.m */; };
+		5160E9001C520BDB0088B2A8 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5160E8F91C520BDB0088B2A8 /* UIView+ViewController.m */; };
+		5160E9011C520BDB0088B2A8 /* XYAddImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5160E8FB1C520BDB0088B2A8 /* XYAddImageView.m */; };
+		5160E9021C520BDB0088B2A8 /* XYaddpicture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5160E8FC1C520BDB0088B2A8 /* XYaddpicture@2x.png */; };
+		5160E9031C520BDB0088B2A8 /* XYaddpicture@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5160E8FD1C520BDB0088B2A8 /* XYaddpicture@3x.png */; };
+		5160E9041C520BDB0088B2A8 /* XYdeletepicyure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5160E8FE1C520BDB0088B2A8 /* XYdeletepicyure@2x.png */; };
+		5160E9051C520BDB0088B2A8 /* XYdeletepicyure@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5160E8FF1C520BDB0088B2A8 /* XYdeletepicyure@3x.png */; };
 		518745011C33DC5100112301 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 518745001C33DC5100112301 /* main.m */; };
 		518745041C33DC5100112301 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 518745031C33DC5100112301 /* AppDelegate.m */; };
-		518745071C33DC5100112301 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 518745061C33DC5100112301 /* ViewController.m */; };
 		5187450A1C33DC5100112301 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 518745081C33DC5100112301 /* Main.storyboard */; };
 		5187450C1C33DC5100112301 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5187450B1C33DC5100112301 /* Assets.xcassets */; };
 		5187450F1C33DC5100112301 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5187450D1C33DC5100112301 /* LaunchScreen.storyboard */; };
 		5187451A1C33DC5100112301 /* addImageTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 518745191C33DC5100112301 /* addImageTestTests.m */; };
 		518745251C33DC5100112301 /* addImageTestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 518745241C33DC5100112301 /* addImageTestUITests.m */; };
-		518745371C33DCD600112301 /* XYAddImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 518745361C33DCD600112301 /* XYAddImageView.m */; };
-		5187453A1C33E11F00112301 /* addpicture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 518745381C33E11F00112301 /* addpicture@2x.png */; };
-		5187453B1C33E11F00112301 /* addpicture@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 518745391C33E11F00112301 /* addpicture@3x.png */; };
-		5187453E1C33E22E00112301 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5187453D1C33E22E00112301 /* UIView+ViewController.m */; };
-		518745411C33F5FF00112301 /* deletepicyure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5187453F1C33F5FF00112301 /* deletepicyure@2x.png */; };
-		518745421C33F5FF00112301 /* deletepicyure@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 518745401C33F5FF00112301 /* deletepicyure@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,12 +41,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5160E8F41C520BCB0088B2A8 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		5160E8F51C520BCB0088B2A8 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5160E8F81C520BDB0088B2A8 /* UIView+ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ViewController.h"; sourceTree = "<group>"; };
+		5160E8F91C520BDB0088B2A8 /* UIView+ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewController.m"; sourceTree = "<group>"; };
+		5160E8FA1C520BDB0088B2A8 /* XYAddImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYAddImageView.h; sourceTree = "<group>"; };
+		5160E8FB1C520BDB0088B2A8 /* XYAddImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAddImageView.m; sourceTree = "<group>"; };
+		5160E8FC1C520BDB0088B2A8 /* XYaddpicture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XYaddpicture@2x.png"; sourceTree = "<group>"; };
+		5160E8FD1C520BDB0088B2A8 /* XYaddpicture@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XYaddpicture@3x.png"; sourceTree = "<group>"; };
+		5160E8FE1C520BDB0088B2A8 /* XYdeletepicyure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XYdeletepicyure@2x.png"; sourceTree = "<group>"; };
+		5160E8FF1C520BDB0088B2A8 /* XYdeletepicyure@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XYdeletepicyure@3x.png"; sourceTree = "<group>"; };
 		518744FC1C33DC5100112301 /* addImageTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = addImageTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		518745001C33DC5100112301 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		518745021C33DC5100112301 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		518745031C33DC5100112301 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		518745051C33DC5100112301 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		518745061C33DC5100112301 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		518745091C33DC5100112301 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5187450B1C33DC5100112301 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5187450E1C33DC5100112301 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,14 +65,6 @@
 		518745201C33DC5100112301 /* addImageTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = addImageTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		518745241C33DC5100112301 /* addImageTestUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = addImageTestUITests.m; sourceTree = "<group>"; };
 		518745261C33DC5100112301 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		518745351C33DCD600112301 /* XYAddImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYAddImageView.h; sourceTree = "<group>"; };
-		518745361C33DCD600112301 /* XYAddImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAddImageView.m; sourceTree = "<group>"; };
-		518745381C33E11F00112301 /* addpicture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addpicture@2x.png"; sourceTree = "<group>"; };
-		518745391C33E11F00112301 /* addpicture@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addpicture@3x.png"; sourceTree = "<group>"; };
-		5187453C1C33E22E00112301 /* UIView+ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ViewController.h"; sourceTree = "<group>"; };
-		5187453D1C33E22E00112301 /* UIView+ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewController.m"; sourceTree = "<group>"; };
-		5187453F1C33F5FF00112301 /* deletepicyure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deletepicyure@2x.png"; sourceTree = "<group>"; };
-		518745401C33F5FF00112301 /* deletepicyure@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deletepicyure@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +92,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5160E8F71C520BDB0088B2A8 /* XYAddImageView */ = {
+			isa = PBXGroup;
+			children = (
+				5160E8F81C520BDB0088B2A8 /* UIView+ViewController.h */,
+				5160E8F91C520BDB0088B2A8 /* UIView+ViewController.m */,
+				5160E8FA1C520BDB0088B2A8 /* XYAddImageView.h */,
+				5160E8FB1C520BDB0088B2A8 /* XYAddImageView.m */,
+				5160E8FC1C520BDB0088B2A8 /* XYaddpicture@2x.png */,
+				5160E8FD1C520BDB0088B2A8 /* XYaddpicture@3x.png */,
+				5160E8FE1C520BDB0088B2A8 /* XYdeletepicyure@2x.png */,
+				5160E8FF1C520BDB0088B2A8 /* XYdeletepicyure@3x.png */,
+			);
+			path = XYAddImageView;
+			sourceTree = "<group>";
+		};
 		518744F31C33DC5100112301 = {
 			isa = PBXGroup;
 			children = (
@@ -115,18 +130,11 @@
 		518744FE1C33DC5100112301 /* addImageTest */ = {
 			isa = PBXGroup;
 			children = (
-				5187453F1C33F5FF00112301 /* deletepicyure@2x.png */,
-				518745401C33F5FF00112301 /* deletepicyure@3x.png */,
-				5187453C1C33E22E00112301 /* UIView+ViewController.h */,
-				5187453D1C33E22E00112301 /* UIView+ViewController.m */,
-				518745381C33E11F00112301 /* addpicture@2x.png */,
-				518745391C33E11F00112301 /* addpicture@3x.png */,
-				518745351C33DCD600112301 /* XYAddImageView.h */,
-				518745361C33DCD600112301 /* XYAddImageView.m */,
+				5160E8F71C520BDB0088B2A8 /* XYAddImageView */,
 				518745021C33DC5100112301 /* AppDelegate.h */,
 				518745031C33DC5100112301 /* AppDelegate.m */,
-				518745051C33DC5100112301 /* ViewController.h */,
-				518745061C33DC5100112301 /* ViewController.m */,
+				5160E8F41C520BCB0088B2A8 /* ViewController.h */,
+				5160E8F51C520BCB0088B2A8 /* ViewController.m */,
 				518745081C33DC5100112301 /* Main.storyboard */,
 				5187450B1C33DC5100112301 /* Assets.xcassets */,
 				5187450D1C33DC5100112301 /* LaunchScreen.storyboard */,
@@ -265,13 +273,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5160E9051C520BDB0088B2A8 /* XYdeletepicyure@3x.png in Resources */,
+				5160E9041C520BDB0088B2A8 /* XYdeletepicyure@2x.png in Resources */,
+				5160E9031C520BDB0088B2A8 /* XYaddpicture@3x.png in Resources */,
 				5187450F1C33DC5100112301 /* LaunchScreen.storyboard in Resources */,
-				518745411C33F5FF00112301 /* deletepicyure@2x.png in Resources */,
 				5187450C1C33DC5100112301 /* Assets.xcassets in Resources */,
-				518745421C33F5FF00112301 /* deletepicyure@3x.png in Resources */,
+				5160E9021C520BDB0088B2A8 /* XYaddpicture@2x.png in Resources */,
 				5187450A1C33DC5100112301 /* Main.storyboard in Resources */,
-				5187453B1C33E11F00112301 /* addpicture@3x.png in Resources */,
-				5187453A1C33E11F00112301 /* addpicture@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,11 +304,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				518745071C33DC5100112301 /* ViewController.m in Sources */,
+				5160E8F61C520BCB0088B2A8 /* ViewController.m in Sources */,
+				5160E9001C520BDB0088B2A8 /* UIView+ViewController.m in Sources */,
 				518745041C33DC5100112301 /* AppDelegate.m in Sources */,
+				5160E9011C520BDB0088B2A8 /* XYAddImageView.m in Sources */,
 				518745011C33DC5100112301 /* main.m in Sources */,
-				5187453E1C33E22E00112301 /* UIView+ViewController.m in Sources */,
-				518745371C33DCD600112301 /* XYAddImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
