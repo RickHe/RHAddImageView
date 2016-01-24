@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "HMYPodTest"
-  s.version         = "1.1.0"  
+  s.version         = "1.1.1"  
   s.summary          = "A marquee view used on iOS."  
   s.description      = "It is a marquee view used on iOS, which implement by Objective-C" 
   s.homepage         = "https://github.com/RickHe/HMYPodTest.git"  
@@ -15,8 +15,8 @@ Pod::Spec.new do |s|
   # s.osx.deployment_target = '10.7'  
   s.requires_arc = true  
   
-  s.source_files = 'XYAddImageView/*'  
-  # s.resources = ["XYAddImageView/Images/*.png"]
+  s.source_files = 'XYAddImageView/.{h,m}'  
+  s.resources = "XYAddImageView/Images/*.png"
   
   # s.ios.exclude_files = 'Classes/osx'  
   # s.osx.exclude_files = 'Classes/ios'  
