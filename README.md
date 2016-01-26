@@ -8,7 +8,7 @@ XYAddImageView
 
 #### <a id = "使用方法"></a>使用方法
 ###### 基本使用
-        XYAddImageView *img = [[XYAddImageView alloc] initWithFrame:CGRectMake(0, 100, kScreenWidth, 100)];
+        XYAddImageView *img = [[XYAddImageView alloc] initWithFrame:CGRectMake(0, 100, kScreenWidth, 100) NumberOfImageForOneLine:4];
         [self.view addSubview:img];
 ###### 若添加图片张数无限制可设置代理监测添加图片事件
         img.delegate = self;
