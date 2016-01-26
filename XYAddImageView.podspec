@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name            = "HMYPodTest"
+  s.name            = "XYAddImageView"
   s.version         = "2.0.0"
   s.summary          = "A UI component that can add and display any more images on iOS"
   s.description      = "A UI component that can add and display any more images, which implement by Objective-C"
@@ -17,10 +17,6 @@ Pod::Spec.new do |s|
 
   s.source_files = 'XYAddImageView/*.{h,m}'
   s.resources = "XYAddImageView/Images/*.png"
-
-  # s.ios.exclude_files = 'Classes/osx'
-  # s.osx.exclude_files = 'Classes/ios'
-  # s.public_header_files = 'Classes/**/*.h'
-  s.frameworks = 'Foundation', 'CoreGraphics', 'UIKit'
+  s.frameworks = 'Foundation', 'UIKit'
 
 end
