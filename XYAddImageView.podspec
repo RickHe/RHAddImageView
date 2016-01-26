@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name            = "HMYPodTest"
-  s.version         = "1.0.0"
+  s.version         = "2.0.0"
   s.summary          = "A UI component that can add and display any more images on iOS"
   s.description      = "A UI component that can add and display any more images, which implement by Objective-C"
   s.homepage         = "https://github.com/RickHe/HMYPodTest.git"
