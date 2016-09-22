@@ -37,7 +37,7 @@
  *  @return self
  */
 - (instancetype)initWithFrame:(CGRect)frame
-      NumberOfImageForOneLine:(NSUInteger)numberOfImage;
+      numberOfImageForOneLine:(NSUInteger)numberOfImage;
 
 @property (nonatomic, readwrite, strong) UIImage *deleteImage;
 @property (nonatomic, readwrite, strong) UIImage *addImage;

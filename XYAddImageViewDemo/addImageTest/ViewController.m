@@ -9,9 +9,6 @@
 #import "ViewController.h"
 #import "XYAddImageView.h"
 
-#define kScreenHeight [UIScreen mainScreen].bounds.size.height
-#define kScreenWidth [UIScreen mainScreen].bounds.size.width
-
 @interface ViewController ()
 
 @end
@@ -21,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    XYAddImageView *img = [[XYAddImageView alloc] initWithFrame:CGRectMake(0, 100, kScreenWidth, 100) NumberOfImageForOneLine:5];
+    XYAddImageView *img = [[XYAddImageView alloc] initWithFrame:CGRectMake(100, 100, self.view.frame.size.width, 10)  numberOfImageForOneLine:2];
     [self.view addSubview:img];
 }
 

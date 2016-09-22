@@ -9,8 +9,16 @@
 #import "XYAddImageView.h"
 #import "UIView+ViewController.h"
 
-#define kScreenHeight [UIScreen mainScreen].bounds.size.height
-#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define HMYScreenHeight [UIScreen mainScreen].bounds.size.height
+#define HMYScreenWidth [UIScreen mainScreen].bounds.size.width
+#define HMYDefaultRatioOfLengthWidth 4/3
+
+static const NSUInteger kBaseImageTag = 100;
+static const CGFloat kDefaultImageVerticalSpacing = 10;
+static const CGFloat kMaxImageHorizontalSpacing = 18;
+static const CGFloat kDefaultImageHeight = 100;
+static const NSUInteger kDefaultNumberOfImageForOneLine = 4;
+static const NSUInteger kMaxNumberOfImageForOneLine = 11;
 
 const NSString *kAddImageNotification = @"kAddImageNotification";
 const NSString *kDeleteImageNotification = @"kDeleteImageNotification";
@@ -24,7 +32,7 @@ const NSString *kDeleteImageNotification = @"kDeleteImageNotification";
     CGFloat _imageHeight;                   // 视图高度
     NSMutableArray *_selectedImageArray;    // 选中图片存在本数组
     NSMutableArray *_tagArray;              // 图片的删除键的tag值数组
-    NSUInteger _numberOfImageForOneLine;              // 一行图片数量
+    NSUInteger _numberOfImageForOneLine;    // 一行图片数量
 }
 
 @property (nonatomic, readwrite, assign) NSUInteger currentSection; // 当前图片行数
@@ -42,27 +50,10 @@ const NSString *kDeleteImageNotification = @"kDeleteImageNotification";
  *  @return self
  */
 - (instancetype)initWithFrame:(CGRect)frame
-      NumberOfImageForOneLine:(NSUInteger)numberOfImage {
+      numberOfImageForOneLine:(NSUInteger)numberOfImage {
     if (self = [super initWithFrame:frame]) {
-        _deleteImage = [UIImage imageNamed:@"XYdeletepicyure"];
-        _addImage = [UIImage imageNamed:@"XYaddpicture"];
-        NSParameterAssert(numberOfImage < 11);
-        _imageCount = 0;
-        _currentSection = 0;
-        _numberOfImageForOneLine = numberOfImage;
-        _imageWidth = (kScreenWidth - (numberOfImage + 1) * (17 - numberOfImage)) / numberOfImage;
-        _imageHeight = _imageWidth * 4 / 3;
-        CGRect rect = self.frame;
-        rect.size.height = _imageHeight;
-        _selectedImageArray = [NSMutableArray new];
-        _tagArray = [NSMutableArray new];
-        
-        // 添加按钮
-        _addImageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_addImageBtn setBackgroundImage:_addImage forState:UIControlStateNormal];
-        _addImageBtn.frame = CGRectMake((17 - _numberOfImageForOneLine), 0, _imageWidth, _imageHeight);
-        [_addImageBtn addTarget:self action:@selector(addImage:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:_addImageBtn];
+        [self p_initData:numberOfImage];
+        [self p_initSubViews];
     }
     return self;
 }
@@ -75,7 +66,7 @@ const NSString *kDeleteImageNotification = @"kDeleteImageNotification";
  *  @return self
  */
 - (instancetype)initWithFrame:(CGRect)frame {
-    return [self initWithFrame:frame NumberOfImageForOneLine:4];
+    return [self initWithFrame:frame numberOfImageForOneLine:kDefaultNumberOfImageForOneLine];
 }
 
 /**
@@ -84,8 +75,33 @@ const NSString *kDeleteImageNotification = @"kDeleteImageNotification";
  *  @return self
  */
 - (instancetype)init {
-    return [self initWithFrame:CGRectMake(0, 0, kScreenWidth, 100) NumberOfImageForOneLine:4];
+    return [self initWithFrame:CGRectMake(0, 0, HMYScreenWidth, kDefaultImageHeight) numberOfImageForOneLine:kDefaultNumberOfImageForOneLine];
 }
+
+#pragma mark - Private
+- (void)p_initSubViews {
+    // 添加按钮
+    _addImageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_addImageBtn setBackgroundImage:_addImage forState:UIControlStateNormal];
+    _addImageBtn.frame = CGRectMake((kMaxImageHorizontalSpacing - _numberOfImageForOneLine), 0, _imageWidth, _imageHeight);
+    [_addImageBtn addTarget:self action:@selector(addImage:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:_addImageBtn];
+}
+
+- (void)p_initData:(NSUInteger)numberOfImage {
+    _deleteImage = [UIImage imageNamed:@"XYdeletepicyure"];
+    _addImage = [UIImage imageNamed:@"XYaddpicture"];
+    NSParameterAssert(numberOfImage < kMaxNumberOfImageForOneLine);
+    _numberOfImageForOneLine = numberOfImage;
+    _imageWidth = (HMYScreenWidth - (numberOfImage + 1) * (kMaxImageHorizontalSpacing - numberOfImage)) / numberOfImage;
+    _imageHeight = _imageWidth * HMYDefaultRatioOfLengthWidth;
+    CGRect rect = self.frame;
+    rect.size.height = _imageHeight;
+    _selectedImageArray = [NSMutableArray new];
+    _tagArray = [NSMutableArray new];
+}
+
+
 
 #pragma mark - Set Image
 - (void)setAddImage:(UIImage *)addImage {
@@ -101,6 +117,7 @@ const NSString *kDeleteImageNotification = @"kDeleteImageNotification";
  */
 - (void)deleteImage:(UIButton *)btn {
     NSUInteger flag = 0;
+    // 移除imageView
     for (int index = 0; index < _tagArray.count; index++) {
         if (btn.tag == [_tagArray[index] integerValue]) {
             UIImageView *image = [self viewWithTag:[_tagArray[index] integerValue]];
@@ -110,29 +127,13 @@ const NSString *kDeleteImageNotification = @"kDeleteImageNotification";
             [_tagArray removeObjectAtIndex:index];
         }
     }
+    // 若图片移除完了
     if (_tagArray.count == 0) {
-        _addImageBtn.frame = CGRectMake((17 - _numberOfImageForOneLine) , 0, _imageWidth, _imageHeight);
+        _addImageBtn.frame = CGRectMake((kMaxImageHorizontalSpacing - _numberOfImageForOneLine) , 0, _imageWidth, _imageHeight);
+        return;
     }
-    for (int index = 0; index < _tagArray.count; index++) {
-        UIImageView *image = [self viewWithTag:[_tagArray[index] integerValue]];
-        NSUInteger imageRow = index % _numberOfImageForOneLine;
-        NSUInteger imageSection = index / _numberOfImageForOneLine;
-        image.frame = CGRectMake((17 - _numberOfImageForOneLine) + imageRow * (_imageWidth + (17 - _numberOfImageForOneLine)), imageSection * (_imageHeight + 10), _imageWidth, _imageHeight);
-        NSUInteger btnRow = (index + 1) % _numberOfImageForOneLine;
-        NSUInteger btnSection = (index + 1) / _numberOfImageForOneLine;
-        _addImageBtn.frame = CGRectMake((17 - _numberOfImageForOneLine) + btnRow * (_imageWidth + (17 - _numberOfImageForOneLine)), btnSection * (_imageHeight + 10), _imageWidth, _imageHeight);
-        
-        CGRect frame = self.frame;
-        frame.size.height = _addImageBtn.frame.origin.y + _imageHeight + 10;
-        self.frame = frame;
-        
-        if (_currentSection - 1 == btnSection) {
-            if ([_delegate respondsToSelector:@selector(XYAddImageViewFrameDidDecrease:)]) {
-                [_delegate XYAddImageViewFrameDidDecrease:self];
-            }
-        }
-        _currentSection = btnSection;
-    }
+    // 更新移除完imageView的布局
+    [self p_layoutSubviewsAfterDeleteImage];
 }
 
 /**
@@ -157,6 +158,14 @@ const NSString *kDeleteImageNotification = @"kDeleteImageNotification";
     [alertController addAction:OpenPhotoAction];
     [alertController addAction:cancelAction];
     [self.viewController presentViewController:alertController animated:YES completion:nil];
+    
+    // 兼容ipad
+    UIPopoverPresentationController *popover = alertController.popoverPresentationController;
+    if (popover) {
+        popover.sourceView = _addImageBtn;
+        popover.sourceRect = self.bounds;
+        popover.permittedArrowDirections = UIPopoverArrowDirectionAny;
+    }
 }
 
 #pragma mark - ImageManipulate
@@ -181,23 +190,52 @@ const NSString *kDeleteImageNotification = @"kDeleteImageNotification";
         pick.sourceType = UIImagePickerControllerSourceTypeCamera;
         [self.viewController presentViewController:pick animated:YES completion:nil];
     } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"没有摄像头" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alert show];
+#pragma clang diagnostic pop
     }
 }
 
+/**
+ *  移除图片后更新布局
+ */
+- (void)p_layoutSubviewsAfterDeleteImage {
+    for (int index = 0; index < _tagArray.count; index++)
+    {
+        UIImageView *image = [self viewWithTag:[_tagArray[index] integerValue]];
+        NSUInteger imageRow = index % _numberOfImageForOneLine;
+        NSUInteger imageSection = index / _numberOfImageForOneLine;
+        image.frame = CGRectMake((kMaxImageHorizontalSpacing - _numberOfImageForOneLine) + imageRow * (_imageWidth + (kMaxImageHorizontalSpacing - _numberOfImageForOneLine)), imageSection * (_imageHeight + kDefaultImageVerticalSpacing), _imageWidth, _imageHeight);
+        NSUInteger btnRow = (index + 1) % _numberOfImageForOneLine;
+        NSUInteger btnSection = (index + 1) / _numberOfImageForOneLine;
+        _addImageBtn.frame = CGRectMake((kMaxImageHorizontalSpacing - _numberOfImageForOneLine) + btnRow * (_imageWidth + (kMaxImageHorizontalSpacing - _numberOfImageForOneLine)), btnSection * (_imageHeight + kDefaultImageVerticalSpacing), _imageWidth, _imageHeight);
+        
+        CGRect frame = self.frame;
+        frame.size.height = _addImageBtn.frame.origin.y + _imageHeight + kDefaultImageVerticalSpacing;
+        self.frame = frame;
+        
+        if (_currentSection - 1 == btnSection) {
+            if ([_delegate respondsToSelector:@selector(XYAddImageViewFrameDidDecrease:)]) {
+                [_delegate XYAddImageViewFrameDidDecrease:self];
+            }
+        }
+        _currentSection = btnSection;
+    }
+}
 
 /**
- *  添加图片完成后视图变化
+ *  添加图片完成后更新布局
  */
-- (void)p_addImgView {
+- (void)p_layoutSubviewsAfterAddImage {
     static int index = 1;
     _imageCount = _selectedImageArray.count;
     NSUInteger imageRow = (_imageCount - 1) % _numberOfImageForOneLine;
     NSUInteger imageSection = (_imageCount - 1) / _numberOfImageForOneLine;
-    UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake((17 - _numberOfImageForOneLine) + imageRow * (_imageWidth + (17 - _numberOfImageForOneLine)), imageSection * (_imageHeight + (17 - _numberOfImageForOneLine)), _imageWidth, _imageHeight)];
+    UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake((kMaxImageHorizontalSpacing - _numberOfImageForOneLine) + imageRow * (_imageWidth + (kMaxImageHorizontalSpacing - _numberOfImageForOneLine)), imageSection * (_imageHeight + (kMaxImageHorizontalSpacing - _numberOfImageForOneLine)), _imageWidth, _imageHeight)];
     image.image = _selectedImageArray[_selectedImageArray.count - 1];
-    image.tag = 100 + index;
+    image.tag = kBaseImageTag + index;
     [_tagArray addObject:@(image.tag)];
     image.userInteractionEnabled = YES;
     [self addSubview:image];
@@ -206,15 +244,15 @@ const NSString *kDeleteImageNotification = @"kDeleteImageNotification";
     [_deleteImageBtn setBackgroundImage:_deleteImage forState:UIControlStateNormal];
     _deleteImageBtn.frame = CGRectMake(image.frame.size.width - 6, -6, 12, 12);
     [_deleteImageBtn addTarget:self action:@selector(deleteImage:) forControlEvents:UIControlEventTouchUpInside];
-    _deleteImageBtn.tag = 100 + index;
+    _deleteImageBtn.tag = kBaseImageTag + index;
     index++;
     [image addSubview:_deleteImageBtn];
     
     NSUInteger btnRow = _imageCount % _numberOfImageForOneLine;
     NSUInteger btnSection = _imageCount / _numberOfImageForOneLine;
-    _addImageBtn.frame = CGRectMake((17 - _numberOfImageForOneLine) + btnRow * (_imageWidth + (17 - _numberOfImageForOneLine)), btnSection * (_imageHeight + 10), _imageWidth, _imageHeight);
+    _addImageBtn.frame = CGRectMake((kMaxImageHorizontalSpacing - _numberOfImageForOneLine) + btnRow * (_imageWidth + (kMaxImageHorizontalSpacing - _numberOfImageForOneLine)), btnSection * (_imageHeight + kDefaultImageVerticalSpacing), _imageWidth, _imageHeight);
     CGRect frame = self.frame;
-    frame.size.height = _addImageBtn.frame.origin.y + _imageHeight + 10;
+    frame.size.height = _addImageBtn.frame.origin.y + _imageHeight + kDefaultImageVerticalSpacing;
     self.frame = frame;
     if (_currentSection + 1 == btnSection) {
         if ([_delegate respondsToSelector:@selector(XYAddImageViewFrameDidIncrease:)]) {
@@ -277,7 +315,7 @@ const NSString *kDeleteImageNotification = @"kDeleteImageNotification";
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     NSLog(@"%@", info);
     [_selectedImageArray addObject: info[@"UIImagePickerControllerOriginalImage"]];
-    [self p_addImgView];
+    [self p_layoutSubviewsAfterAddImage];
    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
